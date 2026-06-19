@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="sr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Planer obroka</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Planer obroka</p>
+        <h1>Nedeljni jelovnik</h1>
+      </div>
+      <div class="summary">
+        <span id="mealCount">0 obroka</span>
+        <span id="shoppingCount">0 namirnica</span>
+        <label class="calorie-limit-control">
+          Dnevni limit
+          <span class="calorie-input-wrap">
+            <input id="calorieLimit" type="number" min="0" step="50" value="2000" />
+            <small>kcal</small>
+          </span>
+        </label>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel pantry-panel">
+        <h2>Sta imamo kod kuce</h2>
+        <form id="pantryForm" class="form inline-form">
+          <label>
+            Namirnica
+            <input id="pantryIngredient" type="text" placeholder="npr. jaja" required />
+          </label>
+          <button type="submit">Dodaj</button>
+        </form>
+        <div id="pantryList" class="tag-list"></div>
+      </section>
+
+      <section class="panel suggestions-panel">
+        <h2>Predlozi obroka</h2>
+        <div id="suggestionsList" class="suggestions-list"></div>
+      </section>
+
+      <section class="planner" id="planner"></section>
+
+      <section class="panel">
+        <h2>Dodaj obrok</h2>
+        <form id="mealForm" class="form">
+          <label>
+            Dan
+            <select id="mealDay" required>
+              <option value="Ponedeljak">Ponedeljak</option>
+              <option value="Utorak">Utorak</option>
+              <option value="Sreda">Sreda</option>
+              <option value="Cetvrtak">Cetvrtak</option>
+              <option value="Petak">Petak</option>
+              <option value="Subota">Subota</option>
+              <option value="Nedelja">Nedelja</option>
+            </select>
+          </label>
+
+          <label>
+            Vrsta obroka
+            <select id="mealType" required>
+              <option value="Dorucak">Dorucak</option>
+              <option value="Rucak">Rucak</option>
+              <option value="Uzina">Uzina</option>
+              <option value="Vecera">Vecera</option>
+              <option value="Pice">Pice</option>
+            </select>
+          </label>
+
+          <label>
+            Naziv jela
+            <input id="mealName" type="text" placeholder="npr. Pasta sa povrcem" required />
+          </label>
+
+          <label>
+            Namirnice
+            <textarea id="mealIngredients" placeholder="npr. testenina, paradajz, sir"></textarea>
+          </label>
+
+          <fieldset class="nutrition-fields">
+            <legend>Nutritivne vrednosti po porciji (opciono)</legend>
+            <label>
+              Kalorije
+              <input id="mealCalories" type="number" min="0" placeholder="kcal" />
+            </label>
+            <label>
+              Proteini
+              <input id="mealProtein" type="number" min="0" step="0.1" placeholder="g" />
+            </label>
+            <label>
+              Masti
+              <input id="mealFat" type="number" min="0" step="0.1" placeholder="g" />
+            </label>
+            <label>
+              Ugljeni hidrati
+              <input id="mealCarbs" type="number" min="0" step="0.1" placeholder="g" />
+            </label>
+          </fieldset>
+
+          <button type="submit">Dodaj u plan</button>
+        </form>
+      </section>
+
+      <section class="panel shopping-panel">
+        <div class="section-heading">
+          <h2>Lista namirnica</h2>
+        </div>
+        <div id="shoppingList" class="shopping-list"></div>
+      </section>
+    </main>
+
+    <dialog id="recipeSearchDialog" class="recipe-dialog">
+      <div class="dialog-heading">
+        <h2>Pronadji recept</h2>
+        <button id="closeRecipeSearch" class="dialog-close" type="button" aria-label="Zatvori">x</button>
+      </div>
+      <form id="recipeSearchForm" class="form inline-form">
+        <label>
+          Naziv jela
+          <input id="recipeSearchInput" type="search" placeholder="npr. lasagne" required />
+        </label>
+        <button type="submit">Pretrazi</button>
+      </form>
+      <p id="recipeSearchStatus" class="search-status" aria-live="polite"></p>
+      <div id="recipeSearchResults" class="search-results"></div>
+    </dialog>
+
+    <script src="app.js"></script>
+  </body>
+</html>
