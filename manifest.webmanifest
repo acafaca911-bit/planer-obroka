@@ -1,0 +1,19 @@
+{
+  "name": "Navigacija kroz Srbiju",
+  "short_name": "Navigacija",
+  "description": "Mapa za rute, mesta, prirodne i kulturne zanimljivosti.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f8faf8",
+  "theme_color": "#f8faf8",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
